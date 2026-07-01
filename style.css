@@ -63,6 +63,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -72,6 +73,7 @@ body {
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     transition: background 0.3s var(--ease), color 0.3s var(--ease);
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .logo {
@@ -1381,6 +1383,10 @@ body[data-theme="dark"] .sort-select select {
         display: none;
     }
 
+    .header-actions .btn {
+        display: none; /* Hide header login button to prevent squishing layout on mobile/tablet */
+    }
+
     .hero-title {
         font-size: 42px;
     }
@@ -1410,10 +1416,6 @@ body[data-theme="dark"] .sort-select select {
 }
 
 @media (max-width: 600px) {
-    .header-actions .btn {
-        display: none; /* Hide header login button to prevent squishing layout */
-    }
-
     .filter-bar {
         justify-content: center;
         gap: 16px;
