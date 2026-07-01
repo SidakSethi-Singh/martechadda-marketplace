@@ -136,7 +136,7 @@ ul {
     background: none;
     border: none;
     padding: 8px;
-    display: flex;
+    display: none; /* Hide by default on desktop */
     flex-direction: column;
     gap: 5px;
     border-radius: 8px;
@@ -1362,6 +1362,7 @@ body[data-theme="dark"] .sort-select select {
 }
 
 /* =========================================================
+/* =========================================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================= */
 @media (max-width: 1024px) {
@@ -1372,6 +1373,10 @@ body[data-theme="dark"] .sort-select select {
 }
 
 @media (max-width: 899px) {
+    .menu-btn {
+        display: flex; /* Show hamburger button on mobile/tablet viewports */
+    }
+
     .main-nav {
         display: none;
     }
@@ -1382,6 +1387,11 @@ body[data-theme="dark"] .sort-select select {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr; /* Force steps timeline vertical stack on mobile */
+        gap: 24px;
     }
 
     .stats-bar {
@@ -1399,34 +1409,61 @@ body[data-theme="dark"] .sort-select select {
     }
 }
 
+@media (max-width: 600px) {
+    .header-actions .btn {
+        display: none; /* Hide header login button to prevent squishing layout */
+    }
+
+    .filter-bar {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .filter-pills {
+        justify-content: center;
+    }
+
+    .brands-row {
+        gap: 28px; /* Tighten brands banner spacing */
+    }
+}
+
 @media (max-width: 480px) {
     .header-inner {
-        padding: 16px 20px;
+        padding: 16px 18px;
     }
     
+    .logo {
+        font-size: 19px; /* Slightly smaller logo text on narrow viewports */
+    }
+
     .hero {
-        padding: 60px 20px 32px;
+        padding: 60px 18px 32px;
     }
     
     .hero-title {
-        font-size: 34px;
+        font-size: 32px;
     }
     
     .filter-bar {
-        padding: 12px 20px 24px;
+        padding: 12px 18px 24px;
     }
     
     .services-grid-container {
-        padding: 8px 20px 32px;
+        padding: 8px 18px 32px;
+    }
+
+    .cta-banner {
+        padding: 32px 24px; /* Reduce cta banner padding */
     }
     
     .how-it-works {
         padding: 48px 20px;
-        margin: 40px 20px;
+        margin: 40px 18px;
     }
     
     .testimonials {
-        padding: 8px 20px 32px;
+        padding: 8px 18px 32px;
     }
     
     .testimonial-card {
@@ -1442,5 +1479,15 @@ body[data-theme="dark"] .sort-select select {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: 17px;
+    }
+
+    .hero-title {
+        font-size: 28px; /* Prevent text overflow on smallest devices (iPhone SE) */
     }
 }
