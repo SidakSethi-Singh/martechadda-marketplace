@@ -421,6 +421,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    /* ---------- Scroll-reveal Observer ---------- */
+    const revealEls = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add("in-view"), i * 60);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.10, rootMargin: "0px 0px -20px 0px" });
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+
     renderAllResourcesGrid();
 
     /* ---------- Connect Dive Deeper Category Cards ---------- */
@@ -516,19 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Escape") closeArticleModal();
     });
 
-    /* ---------- Scroll-reveal Observer ---------- */
-    const revealEls = document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add("in-view"), i * 60);
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.10, rootMargin: "0px 0px -20px 0px" });
-
-    revealEls.forEach((el) => revealObserver.observe(el));
 
     /* ---------- Testimonials Slider ---------- */
     const testimonialCards = document.querySelectorAll(".testimonial-card");
