@@ -681,7 +681,7 @@ html[data-theme="dark"] .hero-badge {
 }
 
 .card-tall .card-media {
-    height: 240px;
+    height: 420px;
 }
 
 .card-stacked .card-media {
@@ -1692,6 +1692,10 @@ body.modal-open {
 
     .pillars-grid {
         grid-template-columns: 1fr;
+    }
+
+    .card-tall .card-media {
+        height: 240px;
     }
 
     .deeper-grid {
