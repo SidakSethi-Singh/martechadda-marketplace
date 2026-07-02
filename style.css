@@ -320,10 +320,15 @@ html[data-theme="dark"] .hero-gradient-wrapper {
 }
 
 .hero {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 80px 32px 32px;
+    max-width: 100%;
+    background: linear-gradient(135deg, #fff3ee 0%, #ffffff 50%, #f6f0ff 100%);
+    padding: 80px 32px 48px;
     text-align: center;
+    transition: background 0.3s var(--ease);
+}
+
+html[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #24140e 0%, #0b0f19 50%, #150f24 100%);
 }
 
 .hero-content {
