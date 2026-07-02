@@ -18,20 +18,20 @@
     <meta property="og:url" content="https://sidaksethi-singh.github.io/martechadda-marketplace/">
     <meta property="og:title" content="MarTechAdda — Marketing Resources Hub">
     <meta property="og:description" content="Explore curated guides, expert case studies, playbooks, and actionable templates on B2B branding, SEO, social media growth, and conversion rate optimization.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1634084462412-b54873c0a56d?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sidaksethi-singh.github.io/martechadda-marketplace/">
     <meta property="twitter:title" content="MarTechAdda — Marketing Resources Hub">
     <meta property="twitter:description" content="Explore curated guides, expert case studies, playbooks, and actionable templates on B2B branding, SEO, social media growth, and conversion rate optimization.">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1634084462412-b54873c0a56d?q=80&w=1200&auto=format&fit=crop">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop">
 
     <!-- Stylesheets & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=1.4">
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -55,32 +55,30 @@
                     <span></span><span></span><span></span>
                 </button>
                 <a href="#" class="logo">
-                    <span class="logo-icon">▲</span>MarTech<span>Adda</span>
+                    <div class="logo-circles">
+                        <span class="circle circle-orange"></span>
+                        <span class="circle circle-green"></span>
+                    </div>
+                    MarTech<span>Adda</span>
                 </a>
             </div>
 
             <nav class="main-nav">
-                <div class="nav-item-dropdown">
-                    <a href="#resources" class="nav-link active">Resources Hub <span class="nav-arrow">▼</span></a>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item" data-filter="all">All Resources</a>
-                        <a href="#" class="dropdown-item" data-filter="Guides">Guides</a>
-                        <a href="#" class="dropdown-item" data-filter="Case Studies">Case Studies</a>
-                        <a href="#" class="dropdown-item" data-filter="Articles">Articles</a>
-                        <a href="#" class="dropdown-item" data-filter="E-books">E-books</a>
-                        <a href="#" class="dropdown-item" data-filter="Checklists">Checklists</a>
-                        <a href="#" class="dropdown-item" data-filter="Videos">Videos</a>
-                    </div>
-                </div>
+                <a href="#" class="nav-link">Marketing Services</a>
+                <span class="nav-divider">|</span>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
-                <a href="#testimonials" class="nav-link">Testimonials</a>
-                <a href="#" class="nav-link">For Experts</a>
+                <span class="nav-divider">|</span>
+                <a href="#resources" class="nav-link active">Resources</a>
+                <span class="nav-divider">|</span>
+                <a href="#experts" class="nav-link">For Experts</a>
+                <span class="nav-divider">|</span>
+                <a href="#" class="nav-link nav-login-link">Login</a>
             </nav>
 
             <div class="header-actions">
                 <!-- Theme Toggle Button -->
                 <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">
-                    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -91,17 +89,10 @@
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
-                <button class="icon-btn" aria-label="Search resources">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="7" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                </button>
-                <button class="btn btn-dark">Login</button>
             </div>
         </div>
     </header>
@@ -110,28 +101,67 @@
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <div class="drawer-header">
-            <a href="#" class="logo"><span class="logo-icon">▲</span>MarTech<span>Adda</span></a>
+            <a href="#" class="logo">
+                <div class="logo-circles">
+                    <span class="circle circle-orange"></span>
+                    <span class="circle circle-green"></span>
+                </div>
+                MarTech<span>Adda</span>
+            </a>
             <button class="close-drawer-btn" id="closeDrawer" aria-label="Close menu">✕</button>
         </div>
         <nav class="drawer-nav">
-            <a href="#resources" class="drawer-link">Resources Hub</a>
+            <a href="#" class="drawer-link">Marketing Services</a>
             <a href="#how-it-works" class="drawer-link">How It Works</a>
-            <a href="#testimonials" class="drawer-link">Testimonials</a>
-            <a href="#" class="drawer-link">For Experts</a>
-            <button class="btn btn-dark w-full" style="margin-top: 24px; width: 100%;">Login</button>
+            <a href="#resources" class="drawer-link">Resources</a>
+            <a href="#experts" class="drawer-link">For Experts</a>
+            <a href="#" class="drawer-link" style="margin-top: 12px; font-weight: bold; color: var(--mint-dark);">Login</a>
         </nav>
     </div>
 
-    <main>
-        <!-- ================= HERO ================= -->
+    <!-- ================= GRADIENT HERO CONTAINER ================= -->
+    <div class="hero-gradient-wrapper">
         <section class="hero">
             <div class="hero-content">
-                <p class="eyebrow">EXPLORE STRATEGIC INSIGHTS</p>
-                <h1 class="hero-title">MarTechAdda — Marketing Resources Hub</h1>
+                <div class="hero-badge">
+                    <span>🚀</span> THE MARKETING INTELLIGENCE HUB
+                </div>
+                <h1 class="hero-title">
+                    Everything You Need<br>to <span>Master Modern Marketing</span>
+                </h1>
                 <p class="hero-sub">Curated guides, expert case studies, and actionable frameworks — all in one place for marketers who mean business.</p>
+                <div class="hero-buttons">
+                    <a href="#all-resources-section" class="btn btn-primary">Explore Resources →</a>
+                    <a href="#experts" class="btn btn-secondary">Meet Our Experts</a>
+                </div>
             </div>
         </section>
 
+        <!-- Stats Bar Container (Matches Box Layout) -->
+        <div class="stats-box-wrapper">
+            <div class="stats-box">
+                <div class="stat-item" data-target="200" data-suffix="+">
+                    <span class="stat-count">0+</span>
+                    <span class="stat-desc">Resources Published</span>
+                </div>
+                <div class="stat-item" data-target="50" data-suffix="k+">
+                    <span class="stat-count">0k+</span>
+                    <span class="stat-desc">Monthly Readers</span>
+                </div>
+                <div class="stat-item" data-target="40" data-suffix="+">
+                    <span class="stat-count">0+</span>
+                    <span class="stat-desc">Expert Contributors</span>
+                </div>
+                <div class="stat-item" data-target="4.9" data-suffix="★" data-decimal="true">
+                    <span class="stat-count">0★</span>
+                    <span class="stat-desc">Average Rating</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content-wrapper">
+        
         <!-- ================= BRANDS BANNER ================= -->
         <section class="brands-section reveal">
             <p class="brands-label">READ &amp; IMPLEMENTED BY LEADING TEAMS</p>
@@ -145,37 +175,207 @@
             </div>
         </section>
 
-        <!-- ================= FILTER BAR ================= -->
-        <section class="filter-bar" id="resources">
-            <div class="filter-pills">
-                <button class="pill pill-active" data-filter="all">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="4" y1="6" x2="20" y2="6" />
-                        <line x1="7" y1="12" x2="17" y2="12" />
-                        <line x1="10" y1="18" x2="14" y2="18" />
-                    </svg>
-                    All Resources
-                </button>
-                <button class="pill" data-filter="Guides">Guides</button>
-                <button class="pill" data-filter="Case Studies">Case Studies</button>
-                <button class="pill" data-filter="Articles">Articles</button>
-                <button class="pill" data-filter="E-books">E-books</button>
-                <button class="pill" data-filter="Checklists">Checklists</button>
-                <button class="pill" data-filter="Videos">Videos</button>
-            </div>
-            <div class="sort-select">
-                <select aria-label="Sort resources">
-                    <option>Sort by: Latest</option>
-                    <option>Sort by: Popular</option>
-                    <option>Sort by: Read Time (Shortest)</option>
-                </select>
+        <!-- ================= EXPLORE BY CORE PILLARS ================= -->
+        <section class="pillars-section reveal" id="resources">
+            <h2 class="section-title-pillar">
+                <span class="pillar-line"></span>Explore by Core Pillars
+            </h2>
+            
+            <div class="pillars-grid">
+                
+                <!-- Card 1: Branding (Tall Column 1) -->
+                <div class="card card-tall" data-id="1">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" alt="B2B Branding browser mockup" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta-row">
+                            <span class="card-tag">BRANDING</span>
+                            <span class="card-read-time">8 min read</span>
+                        </div>
+                        <h3 class="card-title">The Ultimate Guide to Modern B2B Branding</h3>
+                        <p class="card-desc">Learn how to build a unified design system, establish a unique brand voice, and stand out in a crowded marketplace.</p>
+                        <span class="card-link-btn">Read Guide →</span>
+                    </div>
+                </div>
+
+                <!-- Column 2 Stacks -->
+                <div class="pillars-column-stack">
+                    
+                    <!-- Card 2: Strategic Marketing -->
+                    <div class="card card-stacked" data-id="2">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800" alt="Whiteboard brainstorm" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta-row">
+                                <span class="card-tag">STRATEGIC MARKETING</span>
+                                <span class="card-read-time">12 min read</span>
+                            </div>
+                            <h3 class="card-title">Mastering Strategic Marketing in 2026</h3>
+                            <p class="card-desc">An in-depth case study on how leading SaaS companies optimized customer acquisition costs and scaled revenue.</p>
+                            <span class="card-link-btn">Read Guide →</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: SEO Advanced Rank Tracking -->
+                    <div class="card card-stacked" data-id="3">
+                        <div class="card-media">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800" alt="SEO rank tracking phone" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta-row">
+                                <span class="card-tag">MARKETING COLLATERAL</span>
+                                <span class="card-read-time">6 min read</span>
+                            </div>
+                            <h3 class="card-title">Search Engine Optimization: Advanced Rank Tracking</h3>
+                            <p class="card-desc">Discover actionable techniques to build organic visibility, implement Schema markup, and perform site crawl audits.</p>
+                            <span class="card-link-btn">Read Guide →</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Card 4: Content Strategy (Tall Column 3) -->
+                <div class="card card-tall" data-id="4">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800" alt="Fountain pen copy on paper" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta-row">
+                            <span class="card-tag">CONTENT STRATEGY</span>
+                            <span class="card-read-time">5 min read</span>
+                        </div>
+                        <h3 class="card-title">The Content Blueprint: Creating Copy that Converts</h3>
+                        <p class="card-desc">Unlock copywriting methods designed to keep readers engaged, increase email click rates, and convert landing page traffic.</p>
+                        <span class="card-link-btn">Read Guide →</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- ================= RESOURCES GRID ================= -->
-        <section class="services-grid-container">
+        <!-- ================= DIVE DEEPER INTO ================= -->
+        <section class="dive-deeper-section reveal">
+            <h2 class="section-title-pillar">
+                <span class="pillar-line"></span>Dive Deeper Into
+            </h2>
+            
+            <div class="deeper-grid">
+                
+                <!-- Category 01 -->
+                <div class="deeper-card" data-filter-category="Guides">
+                    <div class="deeper-card-media">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800" alt="Hiring plans" loading="lazy">
+                    </div>
+                    <div class="deeper-card-body">
+                        <span class="deeper-num">01</span>
+                        <h3 class="deeper-title">Guides to Hiring People</h3>
+                        <p class="deeper-desc">Learn how to budget, draft actionable project scopes, and choose the ideal marketing lead for your business goals.</p>
+                    </div>
+                </div>
+
+                <!-- Category 02 -->
+                <div class="deeper-card" data-filter-category="Guides">
+                    <div class="deeper-card-media">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800" alt="Map dashboard laptop" loading="lazy">
+                    </div>
+                    <div class="deeper-card-body">
+                        <span class="deeper-num">02</span>
+                        <h3 class="deeper-title">Roles Guide</h3>
+                        <p class="deeper-desc">New to the platform? Use our navigation map to build an elite profile and land top tier clients.</p>
+                    </div>
+                </div>
+
+                <!-- Category 03 -->
+                <div class="deeper-card" data-filter-category="Case Studies">
+                    <div class="deeper-card-media">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800" alt="Office success workspace" loading="lazy">
+                    </div>
+                    <div class="deeper-card-body">
+                        <span class="deeper-num">03</span>
+                        <h3 class="deeper-title">Success Stories &amp; Case Studies</h3>
+                        <p class="deeper-desc">Deep dives into actual business transformations executed by independent platform specialists.</p>
+                    </div>
+                </div>
+
+                <!-- Category 04 -->
+                <div class="deeper-card" data-filter-category="Articles">
+                    <div class="deeper-card-media">
+                        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800" alt="Faqs desk notebook" loading="lazy">
+                    </div>
+                    <div class="deeper-card-body">
+                        <span class="deeper-num">04</span>
+                        <h3 class="deeper-title">Blogs &amp; FAQs</h3>
+                        <p class="deeper-desc">Catch up on industry insights, stay ahead of algorithm shifts, or find rapid answers in our Help Center.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= FEATURED SPOTLIGHT ================= -->
+        <section class="spotlight-section reveal">
+            <h2 class="section-title-pillar">
+                <span class="pillar-line"></span>Featured Spotlight
+            </h2>
+
+            <div class="spotlight-carousel-container">
+                <div class="spotlight-slide-wrapper" id="spotlightWrapper">
+                    <!-- Loaded dynamically via script.js -->
+                </div>
+
+                <!-- Carousel Dot Controllers and Navigation -->
+                <div class="spotlight-controls">
+                    <button class="spotlight-nav-btn prev" id="spotlightPrev" aria-label="Previous featured resource">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+                    <div class="spotlight-dots" id="spotlightDots">
+                        <!-- Dots populated via script.js -->
+                    </div>
+                    <button class="spotlight-nav-btn next" id="spotlightNext" aria-label="Next featured resource">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ALL RESOURCES WIDGET ================= -->
+        <section class="all-resources-section reveal" id="all-resources-section">
+            <div class="all-resources-header-row">
+                <div class="all-resources-title-col">
+                    <h2 class="all-resources-heading">All Resources</h2>
+                    <span class="all-resources-count" id="resourcesCount">8 resources found</span>
+                </div>
+                <div class="search-box-wrapper">
+                    <span class="search-icon-label">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </span>
+                    <input type="text" placeholder="Search resources..." id="searchInput" aria-label="Search resources text">
+                </div>
+            </div>
+
+            <!-- Horizontal pills filter -->
+            <div class="all-resources-pills-row">
+                <button class="pill pill-active" data-filter="all">All</button>
+                <button class="pill" data-filter="Guides">Guides</button>
+                <button class="pill" data-filter="Articles">Articles</button>
+                <button class="pill" data-filter="Case Studies">Case Studies</button>
+                <button class="pill" data-filter="E-books">E-books</button>
+                <button class="pill" data-filter="Videos">Videos</button>
+                <button class="pill" data-filter="Checklists">Checklists</button>
+            </div>
+
+            <!-- Dynamic grid mapping -->
             <div class="services-grid" id="resourcesGrid">
-                <!-- Dynamically Rendered by script.js -->
+                <!-- Populated via script.js -->
             </div>
         </section>
 
@@ -259,26 +459,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- ================= STATS ================= -->
-        <section class="stats-bar reveal">
-            <div class="stat" data-target="50" data-suffix="+">
-                <span class="stat-num">0+</span>
-                <span class="stat-label">Guides Published</span>
-            </div>
-            <div class="stat" data-target="10" data-suffix="k+">
-                <span class="stat-num">0</span>
-                <span class="stat-label">Monthly Readers</span>
-            </div>
-            <div class="stat" data-target="99" data-suffix="%">
-                <span class="stat-num">0%</span>
-                <span class="stat-label">Helpful Rating</span>
-            </div>
-            <div class="stat" data-target="100" data-suffix="%">
-                <span class="stat-num">0%</span>
-                <span class="stat-label">Free Access</span>
-            </div>
-        </section>
     </main>
 
     <!-- ================= ARTICLE READER MODAL ================= -->
@@ -305,10 +485,10 @@
             </div>
             <div class="footer-col">
                 <h5>Categories</h5>
-                <a href="#" class="footer-cat-link" data-filter="Guides">Guides &amp; E-books</a>
-                <a href="#" class="footer-cat-link" data-filter="Case Studies">Case Studies</a>
-                <a href="#" class="footer-cat-link" data-filter="Articles">Articles &amp; Briefs</a>
-                <a href="#" class="footer-cat-link" data-filter="Checklists">Checklists</a>
+                <a href="#all-resources-section" class="footer-cat-link" data-filter="Guides">Guides &amp; E-books</a>
+                <a href="#all-resources-section" class="footer-cat-link" data-filter="Case Studies">Case Studies</a>
+                <a href="#all-resources-section" class="footer-cat-link" data-filter="Articles">Articles &amp; Briefs</a>
+                <a href="#all-resources-section" class="footer-cat-link" data-filter="Checklists">Checklists</a>
             </div>
             <div class="footer-col">
                 <h5>Resources</h5>

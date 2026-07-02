@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tag: "Branding",
             readTime: "8 min read",
             publishDate: "June 25, 2026",
-            image: "https://images.unsplash.com/photo-1634084462412-b54873c0a56d?w=800&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
             author: {
                 name: "Sarah Jenkins",
                 role: "Head of Brand Strategy",
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tag: "Strategic Marketing",
             readTime: "12 min read",
             publishDate: "May 18, 2026",
-            image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800",
             author: {
                 name: "Marcus Vance",
                 role: "Growth Director",
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tag: "Marketing Collateral",
             readTime: "6 min read",
             publishDate: "April 12, 2026",
-            image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800",
             author: {
                 name: "Elena Rostova",
                 role: "Senior SEO Consultant",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tag: "Content Strategy",
             readTime: "5 min read",
             publishDate: "March 30, 2026",
-            image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800",
             author: {
                 name: "David Chen",
                 role: "Copywriter & Narrative Lead",
@@ -195,21 +195,129 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ---------- Dynamic Resources Grid Rendering ---------- */
-    const resourcesGrid = document.getElementById("resourcesGrid");
+    /* ---------- Featured Spotlight Carousel Logic ---------- */
+    const spotlightWrapper = document.getElementById("spotlightWrapper");
+    const spotlightDots = document.getElementById("spotlightDots");
+    const spotlightPrev = document.getElementById("spotlightPrev");
+    const spotlightNext = document.getElementById("spotlightNext");
 
-    function renderResources(items) {
+    // We will place B2B Branding (1), Strategic Marketing (2), and Content Blueprint (4) in spotlight
+    const spotlightItems = resources.filter(r => [1, 2, 4].includes(r.id));
+    let activeSpotlightIndex = 0;
+
+    function renderSpotlight() {
+        if (!spotlightWrapper || !spotlightDots) return;
+        spotlightWrapper.innerHTML = "";
+        spotlightDots.innerHTML = "";
+
+        spotlightItems.forEach((item, index) => {
+            // Slide layout card
+            const slide = document.createElement("div");
+            slide.className = `spotlight-card ${index === 0 ? 'active' : ''}`;
+            slide.dataset.id = item.id;
+
+            slide.innerHTML = `
+                <div class="spotlight-media">
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    <span class="spotlight-badge">★ FEATURED</span>
+                </div>
+                <div class="spotlight-info">
+                    <span class="spotlight-meta">${item.category.toUpperCase()} • ${item.readTime.toUpperCase()} • ${item.publishDate.toUpperCase()}</span>
+                    <h3 class="spotlight-title">${item.title}</h3>
+                    <p class="spotlight-desc">${item.description}</p>
+                    <div class="spotlight-author-row">
+                        <img src="${item.author.avatar}" alt="${item.author.name}" class="author-avatar" loading="lazy">
+                        <div class="author-details">
+                            <span class="author-name">${item.author.name}</span>
+                            <span class="author-role">${item.author.role}</span>
+                        </div>
+                    </div>
+                    <button class="spotlight-read-btn" data-id="${item.id}">
+                        Read Article
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 2px;">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </button>
+                </div>
+            `;
+            spotlightWrapper.appendChild(slide);
+
+            // Dot index
+            const dot = document.createElement("span");
+            dot.className = `spotlight-dot ${index === 0 ? 'active' : ''}`;
+            dot.dataset.index = index;
+            spotlightDots.appendChild(dot);
+        });
+    }
+
+    function showSpotlight(index) {
+        const slides = spotlightWrapper.querySelectorAll(".spotlight-card");
+        const dots = spotlightDots.querySelectorAll(".spotlight-dot");
+        if (slides.length === 0) return;
+
+        if (index < 0) {
+            activeSpotlightIndex = slides.length - 1;
+        } else if (index >= slides.length) {
+            activeSpotlightIndex = 0;
+        } else {
+            activeSpotlightIndex = index;
+        }
+
+        slides.forEach((slide, i) => {
+            if (i === activeSpotlightIndex) {
+                slide.classList.add("active");
+            } else {
+                slide.classList.remove("active");
+            }
+        });
+
+        dots.forEach((dot, i) => {
+            if (i === activeSpotlightIndex) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
+            }
+        });
+    }
+
+    if (spotlightPrev && spotlightNext) {
+        spotlightPrev.addEventListener("click", () => showSpotlight(activeSpotlightIndex - 1));
+        spotlightNext.addEventListener("click", () => showSpotlight(activeSpotlightIndex + 1));
+        
+        spotlightDots.addEventListener("click", (e) => {
+            const dot = e.target.closest(".spotlight-dot");
+            if (dot) {
+                const targetIdx = parseInt(dot.dataset.index, 10);
+                showSpotlight(targetIdx);
+            }
+        });
+    }
+
+    renderSpotlight();
+
+    /* ---------- Dynamic All Resources Grid Logic ---------- */
+    const resourcesGrid = document.getElementById("resourcesGrid");
+    const searchInput = document.getElementById("searchInput");
+    const pills = document.querySelectorAll(".all-resources-pills-row .pill");
+    const footerLinks = document.querySelectorAll(".footer-cat-link");
+    const resourcesCount = document.getElementById("resourcesCount");
+
+    let currentSearchQuery = "";
+    let currentActiveCategory = "all";
+
+    function renderAllResourcesGrid() {
         if (!resourcesGrid) return;
         resourcesGrid.innerHTML = "";
 
-        items.forEach((item) => {
+        resources.forEach((item) => {
             const card = document.createElement("div");
             card.className = "card reveal";
             card.dataset.category = item.category;
             card.dataset.id = item.id;
 
             card.innerHTML = `
-                <div class="card-media">
+                <div class="card-media" style="height: 200px;">
                     <img src="${item.image}" alt="${item.title}" loading="lazy">
                 </div>
                 <div class="card-body">
@@ -229,21 +337,120 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             `;
-
-            // Open article modal on card click
-            card.addEventListener("click", () => {
-                openArticleModal(item);
-            });
-
             resourcesGrid.appendChild(card);
         });
 
-        // Trigger intersection observer reveal
+        // Register new observer trigger
         const revealEls = resourcesGrid.querySelectorAll(".reveal");
         revealEls.forEach((el) => revealObserver.observe(el));
     }
 
-    /* ---------- Article Modal Handlers ---------- */
+    function applyFilterAndSearch() {
+        if (!resourcesGrid) return;
+        const cards = resourcesGrid.querySelectorAll(".card");
+        const queryTerms = currentSearchQuery.toLowerCase().trim().split(/\s+/);
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+            const id = parseInt(card.dataset.id, 10);
+            const item = resources.find(r => r.id === id);
+            if (!item) return;
+
+            // Category condition
+            const matchCategory = (currentActiveCategory === "all" || item.category === currentActiveCategory);
+
+            // Search query condition
+            const textToSearch = (item.title + " " + item.description + " " + item.tag).toLowerCase();
+            const matchSearch = queryTerms.every(term => textToSearch.includes(term));
+
+            if (matchCategory && matchSearch) {
+                card.style.display = "flex";
+                setTimeout(() => card.classList.remove("filtered-out"), 10);
+                visibleCount++;
+            } else {
+                card.classList.add("filtered-out");
+                card.style.display = "none";
+            }
+        });
+
+        if (resourcesCount) {
+            resourcesCount.textContent = `${visibleCount} resource${visibleCount === 1 ? '' : 's'} found`;
+        }
+    }
+
+    // Connect Search input listener
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            currentSearchQuery = e.target.value;
+            applyFilterAndSearch();
+        });
+    }
+
+    // Connect Pills listeners
+    pills.forEach((pill) => {
+        pill.addEventListener("click", () => {
+            pills.forEach((p) => p.classList.remove("pill-active"));
+            pill.classList.add("pill-active");
+            currentActiveCategory = pill.dataset.filter;
+            applyFilterAndSearch();
+        });
+    });
+
+    // Connect Footer category links
+    footerLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const category = link.dataset.filter;
+            currentActiveCategory = category;
+
+            // Update pills selection state
+            pills.forEach((p) => {
+                if (p.dataset.filter === category) {
+                    p.classList.add("pill-active");
+                } else {
+                    p.classList.remove("pill-active");
+                }
+            });
+
+            applyFilterAndSearch();
+
+            const gridSection = document.getElementById("all-resources-section");
+            if (gridSection) {
+                gridSection.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+
+    renderAllResourcesGrid();
+
+    /* ---------- Connect Dive Deeper Category Cards ---------- */
+    const deeperCards = document.querySelectorAll(".deeper-card");
+    deeperCards.forEach((card) => {
+        card.addEventListener("click", () => {
+            const category = card.dataset.filterCategory;
+            if (category) {
+                currentActiveCategory = category;
+                
+                // Sync pills state
+                pills.forEach((p) => {
+                    if (p.dataset.filter === category) {
+                        p.classList.add("pill-active");
+                    } else {
+                        p.classList.remove("pill-active");
+                    }
+                });
+
+                applyFilterAndSearch();
+
+                const gridSection = document.getElementById("all-resources-section");
+                if (gridSection) {
+                    gridSection.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+    });
+
+    /* ---------- Global Delegation for Opening Article Modal ---------- */
     const articleModal = document.getElementById("articleModal");
     const modalContent = document.getElementById("modalContent");
     const modalCloseBtn = document.getElementById("modalCloseBtn");
@@ -281,24 +488,32 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("modal-open");
     }
 
+    document.addEventListener("click", (e) => {
+        // Handle normal cards & spotlight button clicks
+        const card = e.target.closest(".card");
+        const spotlightBtn = e.target.closest(".spotlight-read-btn");
+
+        if (card && card.dataset.id) {
+            const item = resources.find(r => r.id === parseInt(card.dataset.id, 10));
+            if (item) openArticleModal(item);
+        } else if (spotlightBtn && spotlightBtn.dataset.id) {
+            const item = resources.find(r => r.id === parseInt(spotlightBtn.dataset.id, 10));
+            if (item) openArticleModal(item);
+        }
+    });
+
     if (modalCloseBtn) {
         modalCloseBtn.addEventListener("click", closeArticleModal);
     }
 
     if (articleModal) {
-        // Close on background overlay click
         articleModal.addEventListener("click", (e) => {
-            if (e.target === articleModal) {
-                closeArticleModal();
-            }
+            if (e.target === articleModal) closeArticleModal();
         });
     }
 
-    // Close on ESC key press
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeArticleModal();
-        }
+        if (e.key === "Escape") closeArticleModal();
     });
 
     /* ---------- Scroll-reveal Observer ---------- */
@@ -314,92 +529,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.10, rootMargin: "0px 0px -20px 0px" });
 
     revealEls.forEach((el) => revealObserver.observe(el));
-
-    /* ---------- Render Initial resources ---------- */
-    renderResources(resources);
-
-    /* ---------- Category Filtering Logic ---------- */
-    const pills = document.querySelectorAll(".pill");
-    const dropdownItems = document.querySelectorAll(".dropdown-menu .dropdown-item");
-    const footerLinks = document.querySelectorAll(".footer-cat-link");
-
-    function applyFilter(filterValue) {
-        if (!resourcesGrid) return;
-        
-        if (filterValue === "all") {
-            resourcesGrid.classList.remove("filter-active");
-        } else {
-            resourcesGrid.classList.add("filter-active");
-        }
-
-        const cards = resourcesGrid.querySelectorAll(".card");
-        cards.forEach((card) => {
-            const category = card.dataset.category;
-            if (filterValue === "all" || category === filterValue) {
-                card.style.display = "flex";
-                // Allow CSS opacity animations
-                setTimeout(() => card.classList.remove("filtered-out"), 10);
-            } else {
-                card.classList.add("filtered-out");
-                // Set display none after fade-out transition
-                card.style.display = "none";
-            }
-        });
-
-        // Sync pills
-        pills.forEach((p) => {
-            if (p.dataset.filter === filterValue) {
-                p.classList.add("pill-active");
-            } else {
-                p.classList.remove("pill-active");
-            }
-        });
-
-        // Sync dropdown items
-        dropdownItems.forEach((item) => {
-            if (item.dataset.filter === filterValue) {
-                item.style.fontWeight = "bold";
-            } else {
-                item.style.fontWeight = "";
-            }
-        });
-    }
-
-    // Connect pill event listeners
-    pills.forEach((pill) => {
-        pill.addEventListener("click", () => {
-            const filterValue = pill.dataset.filter;
-            applyFilter(filterValue);
-        });
-    });
-
-    // Connect dropdown event listeners
-    dropdownItems.forEach((item) => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
-            const filterValue = item.dataset.filter;
-            applyFilter(filterValue);
-            
-            const resourcesSection = document.getElementById("resources");
-            if (resourcesSection) {
-                resourcesSection.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
-
-    // Connect footer categories event listeners
-    footerLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const filterValue = link.dataset.filter;
-            applyFilter(filterValue);
-            
-            const resourcesSection = document.getElementById("resources");
-            if (resourcesSection) {
-                resourcesSection.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
 
     /* ---------- Testimonials Slider ---------- */
     const testimonialCards = document.querySelectorAll(".testimonial-card");
@@ -454,20 +583,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ---------- Animated stat counters ---------- */
-    const stats = document.querySelectorAll(".stat");
+    const stats = document.querySelectorAll(".stat-item");
 
     const animateCount = (el) => {
-        const target = parseInt(el.dataset.target, 10);
+        const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || "";
-        const numEl = el.querySelector(".stat-num");
+        const numEl = el.querySelector(".stat-count");
         const duration = 1400;
         const start = performance.now();
+        const hasDecimal = el.dataset.decimal === "true";
 
         function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            const value = Math.round(eased * target);
-            numEl.textContent = value + suffix;
+            const value = eased * target;
+            
+            if (hasDecimal) {
+                numEl.textContent = value.toFixed(1) + suffix;
+            } else {
+                numEl.textContent = Math.round(value) + suffix;
+            }
             if (progress < 1) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
